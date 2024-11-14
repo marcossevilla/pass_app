@@ -35,10 +35,10 @@ packages:
     dependency: "direct main"
     description:
       name: apple_passkit
-      sha256: a1e904341085310f4efd3e4754cac6c26485ce028fac101f1c288c9ed9432167
+      sha256: "3df580335fd0107b8071113e82cbd06d3ececf0f5564e32e5bccefbf8254e5c4"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   archive:
     dependency: transitive
     description:
