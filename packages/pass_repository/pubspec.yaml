@@ -1,0 +1,16 @@
+name: pass_repository
+description: A repository to manage passes domain.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  api_client:
+    path: ../api_client
+
+dev_dependencies:
+  mocktail: ^1.0.4
+  test: ^1.25.7
+  very_good_analysis: ^6.0.0

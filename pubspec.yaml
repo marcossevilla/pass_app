@@ -1,0 +1,45 @@
+name: pass_app
+description: A full-stack application to show Apple Passkit functionality.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+  flutter: 3.24.1
+
+dependencies:
+  api_client:
+    path: packages/api_client
+  api_models:
+    path: packages/api_models
+  apple_passkit: ^1.0.0
+  bloc: ^8.1.4
+  cupertino_icons: ^1.0.8
+  equatable: ^2.0.5
+  flow_builder: ^0.1.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.6
+  flutter_localizations:
+    sdk: flutter
+  formz: ^0.7.0
+  intl: ^0.19.0
+  meta: ^1.15.0
+  modal_bottom_sheet: ^3.0.0
+  pass_repository:
+    path: packages/pass_repository
+  passkit: ^0.0.10
+  passkit_ui: ^0.0.5
+  user_repository:
+    path: packages/user_repository
+
+dev_dependencies:
+  bloc_test: ^9.1.7
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true

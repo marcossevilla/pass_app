@@ -1,0 +1,20 @@
+name: user_repository
+description: A package that manages the user domain.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  api_models:
+    path: ../../../packages/api_models
+  crypto: ^3.0.5
+  db_client:
+    path: ../db_client
+  meta: ^1.16.0
+
+dev_dependencies:
+  mocktail: ^1.0.4
+  test: ^1.25.7
+  very_good_analysis: ^6.0.0

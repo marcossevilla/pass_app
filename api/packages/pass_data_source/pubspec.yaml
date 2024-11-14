@@ -1,0 +1,20 @@
+name: pass_data_source
+description: A data source to manage passes.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  api_models:
+    path: ../../../packages/api_models
+  db_client:
+    path: ../db_client
+  passkit: ^0.0.10
+  uuid: ^4.5.1
+
+dev_dependencies:
+  mocktail: ^1.0.4
+  test: ^1.25.7
+  very_good_analysis: ^6.0.0
