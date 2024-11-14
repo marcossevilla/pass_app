@@ -20,8 +20,8 @@ packages:
   api_client:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/pass_app/packages/api_client"
-      relative: false
+      path: "packages/api_client"
+      relative: true
     source: path
     version: "0.1.0+1"
   api_models:
@@ -35,10 +35,10 @@ packages:
     dependency: "direct main"
     description:
       name: apple_passkit
-      sha256: a1e904341085310f4efd3e4754cac6c26485ce028fac101f1c288c9ed9432167
+      sha256: "3df580335fd0107b8071113e82cbd06d3ececf0f5564e32e5bccefbf8254e5c4"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   archive:
     dependency: transitive
     description:
@@ -441,8 +441,8 @@ packages:
   pass_repository:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/pass_app/packages/pass_repository"
-      relative: false
+      path: "packages/pass_repository"
+      relative: true
     source: path
     version: "0.1.0+1"
   passkit:
