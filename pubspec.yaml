@@ -1,5 +1,5 @@
 name: pass_app
-description: A full-stack application to show Apple Passkit functionality.
+description: A full-stack application to show Apple PassKit functionality.
 version: 1.0.0+1
 publish_to: none
 

@@ -19,7 +19,7 @@ void main() {
       passRepository = _MockPassRepository();
     });
 
-    testWidgets('renders EventPage', (tester) async {
+    testWidgets('renders HomePage', (tester) async {
       await tester.pumpWidget(
         App(
           userRepository: userRepository,
