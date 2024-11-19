@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:pass_app/app/app.dart';
 import 'package:pass_app/home/create_pass/create_pass.dart';
-import 'package:pass_app/home/passes.dart';
+import 'package:pass_app/home/home.dart';
 import 'package:pass_app/pass_detail/pass_detail.dart';
 import 'package:pass_repository/pass_repository.dart';
 import 'package:passkit/passkit.dart';

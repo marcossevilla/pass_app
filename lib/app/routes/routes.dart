@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:pass_app/app/app.dart';
-import 'package:pass_app/home/passes.dart';
+import 'package:pass_app/home/home.dart';
 import 'package:pass_app/sign_in/sign_in.dart';
 
 List<Page<void>> onGenerateAppPages(
