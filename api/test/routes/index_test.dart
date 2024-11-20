@@ -16,7 +16,7 @@ void main() {
       expect(response.statusCode, equals(HttpStatus.ok));
       expect(
         response.body(),
-        completion(equals('Welcome to Dart Frog!')),
+        completion(equals('Welcome to Apple PassKit + Dart Frog!')),
       );
     });
   });

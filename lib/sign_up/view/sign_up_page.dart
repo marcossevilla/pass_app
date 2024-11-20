@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:pass_app/app/app.dart';
+import 'package:pass_app/l10n/l10n.dart';
 import 'package:pass_app/sign_up/sign_up.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -11,8 +12,11 @@ class SignUpPage extends StatelessWidget {
   static Route<void> route() {
     return CupertinoPageRoute<void>(
       builder: (context) => const SignUpPage(),
+      settings: const RouteSettings(name: routeName),
     );
   }
+
+  static const routeName = '/sign-up';
 
   @override
   Widget build(BuildContext context) {
@@ -30,31 +34,30 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return MultiBlocListener(
       listeners: [
         BlocListener<SignUpBloc, SignUpState>(
-          listenWhen: (previous, current) {
-            return previous != current && current.status.isSuccess;
-          },
+          listenWhen: (previous, current) =>
+              previous.status != current.status && current.status.isSuccess,
           listener: (context, state) {
             context.read<AppBloc>().add(AppSignUpCompleted(state.user!));
             Navigator.of(context).pop();
           },
         ),
         BlocListener<SignUpBloc, SignUpState>(
-          listenWhen: (previous, current) {
-            return previous != current && current.status.isFailure;
-          },
+          listenWhen: (previous, current) =>
+              previous.status != current.status && current.status.isFailure,
           listener: (context, state) async {
             await showCupertinoDialog<void>(
               context: context,
               builder: (context) => CupertinoAlertDialog(
-                title: const Text('Sign up failure'),
-                content: const Text('Please try again later.'),
+                title: Text(l10n.signUpPageFailureDialogTitle),
+                content: Text(l10n.signUpPageFailureDialogContent),
                 actions: [
                   CupertinoDialogAction(
                     onPressed: Navigator.of(context).pop,
-                    child: const Text('OK'),
+                    child: Text(l10n.signUpPageFailureDialogActionLabel),
                   ),
                 ],
               ),
@@ -72,13 +75,14 @@ class SignUpContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          const CupertinoSliverNavigationBar(
-            previousPageTitle: 'Sign in',
-            largeTitle: Text('Sign up'),
-            middle: Text('FlutterConf Latam 2024'),
+          CupertinoSliverNavigationBar(
+            previousPageTitle: l10n.signInPageNavigationBarTitle,
+            largeTitle: Text(l10n.signUpPageNavigationBarTitle),
+            middle: Text(l10n.eventName),
             stretch: true,
             alwaysShowMiddle: false,
           ),
@@ -87,7 +91,7 @@ class SignUpContent extends StatelessWidget {
             sliver: SliverList.list(
               children: [
                 CupertinoTextField(
-                  placeholder: 'Your username',
+                  placeholder: l10n.signUpPageUsernameTextFieldPlaceholder,
                   onChanged: (username) {
                     context
                         .read<SignUpBloc>()
@@ -96,7 +100,7 @@ class SignUpContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 CupertinoTextField(
-                  placeholder: 'Your password',
+                  placeholder: l10n.signUpPagePasswordTextFieldPlaceholder,
                   obscureText: true,
                   onChanged: (password) {
                     context
@@ -140,7 +144,7 @@ class SubmitButton extends StatelessWidget {
       onPressed: isFormValid
           ? () => context.read<SignUpBloc>().add(const SignUpFormSubmitted())
           : null,
-      child: const Text('Create account'),
+      child: Text(context.l10n.signUpPageSubmitButtonLabel),
     );
   }
 }

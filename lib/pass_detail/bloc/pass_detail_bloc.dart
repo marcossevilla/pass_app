@@ -8,9 +8,10 @@ part 'pass_detail_state.dart';
 
 class PassDetailBloc extends Bloc<PassDetailEvent, PassDetailState> {
   PassDetailBloc({
+    required PkPass pass,
     ApplePassKit? passKit,
   })  : _passKit = passKit ?? ApplePassKit(),
-        super(const PassDetailState()) {
+        super(PassDetailState(pass: pass)) {
     on<PassDetailPassAdded>(_onPassAdded);
   }
 
@@ -20,13 +21,19 @@ class PassDetailBloc extends Bloc<PassDetailEvent, PassDetailState> {
     PassDetailPassAdded event,
     Emitter<PassDetailState> emit,
   ) async {
-    final conditions = await Future.wait([
-      _passKit.isPassLibraryAvailable(),
-      _passKit.canAddPasses(),
-    ]);
+    try {
+      final conditions = await Future.wait([
+        _passKit.isPassLibraryAvailable(),
+        _passKit.canAddPasses(),
+      ]);
 
-    if (conditions.every((condition) => condition)) {
-      await _passKit.addPass(event.pass.sourceData!);
+      if (conditions.every((condition) => condition)) {
+        await _passKit.addPass(event.pass.sourceData!);
+        emit(state.copyWith(status: PassDetailStatus.added));
+      }
+    } catch (error, stackTrace) {
+      addError(error, stackTrace);
+      emit(state.copyWith(status: PassDetailStatus.failure));
     }
   }
 }

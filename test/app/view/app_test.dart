@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pass_app/app/app.dart';
-import 'package:pass_app/home/passes.dart';
 import 'package:pass_repository/pass_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -19,14 +18,14 @@ void main() {
       passRepository = _MockPassRepository();
     });
 
-    testWidgets('renders EventPage', (tester) async {
+    testWidgets('renders AppView', (tester) async {
       await tester.pumpWidget(
         App(
           userRepository: userRepository,
           passRepository: passRepository,
         ),
       );
-      expect(find.byType(HomePage), findsOneWidget);
+      expect(find.byType(AppView), findsOneWidget);
     });
   });
 }

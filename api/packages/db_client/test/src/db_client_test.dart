@@ -117,12 +117,12 @@ void main() {
 
         expect(
           dbClient.getBy(DataBox.users, fields: {'name': 'test'}),
-          isA<DbEntityRecord>(),
+          equals([isA<DbEntityRecord>()]),
         );
       });
 
       test('throws when record is not found', () {
-        when(() => usersBox.values).thenReturn([]);
+        when(() => usersBox.values).thenThrow(Exception());
 
         expect(
           () => dbClient.getBy(DataBox.users, fields: {'name': 'test'}),
