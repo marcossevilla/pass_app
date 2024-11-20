@@ -116,7 +116,9 @@ class SignInContent extends StatelessWidget {
                   child: CupertinoButton(
                     child: Text(l10n.signInPageCreateAccountButtonLabel),
                     onPressed: () async {
-                      await Navigator.of(context).push(SignUpPage.route());
+                      await Navigator.of(context).push<void>(
+                        SignUpPage.route(),
+                      );
                     },
                   ),
                 ),

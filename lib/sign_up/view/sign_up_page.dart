@@ -12,8 +12,11 @@ class SignUpPage extends StatelessWidget {
   static Route<void> route() {
     return CupertinoPageRoute<void>(
       builder: (context) => const SignUpPage(),
+      settings: const RouteSettings(name: routeName),
     );
   }
+
+  static const routeName = '/sign-up';
 
   @override
   Widget build(BuildContext context) {
