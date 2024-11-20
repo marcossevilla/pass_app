@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:api_models/api_models.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +21,7 @@ class _FakeUser extends Fake implements User {
 }
 
 void main() {
-  group('CreatePassPage', () {
+  group('CreatePassSheet', () {
     late AppBloc appBloc;
     late CreatePassBloc createPassBloc;
     late Widget widgetToTest;
@@ -40,7 +38,11 @@ void main() {
           BlocProvider.value(value: appBloc),
           BlocProvider.value(value: createPassBloc),
         ],
-        child: CreatePassPage(),
+        child: Navigator(
+          onGenerateRoute: (settings) => CreatePassSheet.route(
+            createPassBloc: createPassBloc,
+          ),
+        ),
       );
     });
 
@@ -126,6 +128,7 @@ void main() {
           );
 
           await tester.pumpApp(widgetToTest);
+          await tester.pumpAndSettle();
           await tester.tap(find.byType(CupertinoButton));
 
           verify(

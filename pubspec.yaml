@@ -25,11 +25,11 @@ dependencies:
   formz: ^0.7.0
   intl: ^0.19.0
   meta: ^1.15.0
-  modal_bottom_sheet: ^3.0.0
   pass_repository:
     path: packages/pass_repository
   passkit: ^0.0.10
   passkit_ui: ^0.0.5
+  sheet: ^1.0.0
   user_repository:
     path: packages/user_repository
 
@@ -37,6 +37,7 @@ dev_dependencies:
   bloc_test: ^9.1.7
   flutter_test:
     sdk: flutter
+  mockingjay: ^0.6.0
   mocktail: ^1.0.4
   very_good_analysis: ^6.0.0
 

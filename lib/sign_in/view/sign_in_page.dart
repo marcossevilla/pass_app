@@ -3,6 +3,7 @@ import 'package:flutter/material.dart' show FlutterLogo;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:pass_app/app/app.dart';
+import 'package:pass_app/l10n/l10n.dart';
 import 'package:pass_app/sign_in/sign_in.dart';
 import 'package:pass_app/sign_up/sign_up.dart';
 import 'package:user_repository/user_repository.dart';
@@ -32,32 +33,29 @@ class SignInView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return MultiBlocListener(
       listeners: [
         BlocListener<SignInBloc, SignInState>(
-          listenWhen: (previous, current) {
-            return previous != current && current.status.isSuccess;
-          },
+          listenWhen: (previous, current) =>
+              previous.status != current.status && current.status.isSuccess,
           listener: (context, state) {
             context.read<AppBloc>().add(AppUserSignedIn(state.user!));
           },
         ),
         BlocListener<SignInBloc, SignInState>(
-          listenWhen: (previous, current) {
-            return previous != current && current.status.isFailure;
-          },
+          listenWhen: (previous, current) =>
+              previous.status != current.status && current.status.isFailure,
           listener: (context, state) async {
             await showCupertinoDialog<void>(
               context: context,
               builder: (context) => CupertinoAlertDialog(
-                title: const Text('Sign in failure'),
-                content: const Text(
-                  'Please make sure your credentials are correct.',
-                ),
+                title: Text(l10n.signInPageFailureDialogTitle),
+                content: Text(l10n.signInPageFailureDialogContent),
                 actions: [
                   CupertinoDialogAction(
                     onPressed: Navigator.of(context).pop,
-                    child: const Text('OK'),
+                    child: Text(l10n.signInPageFailureDialogActionLabel),
                   ),
                 ],
               ),
@@ -75,13 +73,14 @@ class SignInContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          const CupertinoSliverNavigationBar(
-            leading: FlutterLogo(),
-            largeTitle: Text('Sign in'),
-            middle: Text('FlutterConf Latam 2024'),
+          CupertinoSliverNavigationBar(
+            leading: const FlutterLogo(),
+            largeTitle: Text(l10n.signInPageNavigationBarTitle),
+            middle: Text(l10n.eventName),
             stretch: true,
             alwaysShowMiddle: false,
           ),
@@ -90,7 +89,7 @@ class SignInContent extends StatelessWidget {
             sliver: SliverList.list(
               children: [
                 CupertinoTextField(
-                  placeholder: 'Your username',
+                  placeholder: l10n.signInPageUsernameTextFieldPlaceholder,
                   onChanged: (username) {
                     context
                         .read<SignInBloc>()
@@ -99,7 +98,7 @@ class SignInContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 CupertinoTextField(
-                  placeholder: 'Your password',
+                  placeholder: l10n.signInPagePasswordTextFieldPlaceholder,
                   obscureText: true,
                   onChanged: (password) {
                     context
@@ -115,10 +114,10 @@ class SignInContent extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: CupertinoButton(
-                    child: const Text("I don't have an account"),
-                    onPressed: () => Navigator.of(context).push(
-                      SignUpPage.route(),
-                    ),
+                    child: Text(l10n.signInPageCreateAccountButtonLabel),
+                    onPressed: () async {
+                      await Navigator.of(context).push(SignUpPage.route());
+                    },
                   ),
                 ),
               ],
@@ -152,7 +151,7 @@ class SubmitButton extends StatelessWidget {
       onPressed: isFormValid
           ? () => context.read<SignInBloc>().add(const SignInFormSubmitted())
           : null,
-      child: const Text('Sign in'),
+      child: Text(context.l10n.signInPageSubmitButtonLabel),
     );
   }
 }

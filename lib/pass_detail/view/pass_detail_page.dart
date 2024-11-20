@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pass_app/l10n/l10n.dart';
 import 'package:pass_app/pass_detail/pass_detail.dart';
 import 'package:passkit/passkit.dart';
 import 'package:passkit_ui/passkit_ui.dart';
@@ -12,7 +13,7 @@ class PassDetailPage extends StatelessWidget {
 
   static Route<void> route({required PkPass pass}) {
     return CupertinoPageRoute(
-      builder: (_) => PassDetailPage(pass: pass),
+      builder: (context) => PassDetailPage(pass: pass),
       settings: const RouteSettings(name: routeName),
     );
   }
@@ -24,29 +25,27 @@ class PassDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PassDetailBloc(),
-      child: PassDetailView(pass: pass),
+      create: (context) => PassDetailBloc(pass: pass),
+      child: const PassDetailView(),
     );
   }
 }
 
 class PassDetailView extends StatelessWidget {
-  const PassDetailView({
-    required this.pass,
-    super.key,
-  });
-
-  final PkPass pass;
+  const PassDetailView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final pass = context.select((PassDetailBloc bloc) => bloc.state.pass);
+
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.lightBackgroundGray,
       child: CustomScrollView(
         slivers: [
-          const CupertinoSliverNavigationBar(
-            previousPageTitle: 'My passes',
-            largeTitle: Text('Pass Details'),
+          CupertinoSliverNavigationBar(
+            previousPageTitle: l10n.homePageNavigationBarTitle,
+            largeTitle: Text(l10n.passDetailPageNavigationBarTitle),
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -62,7 +61,7 @@ class PassDetailView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: CupertinoButton.filled(
-                child: const Text('Add to Wallet'),
+                child: Text(l10n.passDetailPageAddToWalletButtonLabel),
                 onPressed: () => context
                     .read<PassDetailBloc>()
                     .add(PassDetailPassAdded(pass)),

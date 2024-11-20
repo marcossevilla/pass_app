@@ -1,7 +1,91 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "eventName": "FlutterConf Latam 2024",
+    "@eventName": {
+        "description": "Name of the event"
+    },
+    "genericFailureText": "Something went wrong!",
+    "@genericFailureText": {
+        "description": "Generic error message"
+    },
+    "signInPageFailureDialogTitle": "Sign in failure",
+    "@signInPageFailureDialogTitle": {
+        "description": "Title for the sign in failure dialog"
+    },
+    "signInPageFailureDialogContent": "Please make sure your credentials are correct.",
+    "@signInPageFailureDialogContent": {
+        "description": "Content for the sign in failure dialog"
+    },
+    "signInPageFailureDialogActionLabel": "OK",
+    "@signInPageFailureDialogActionLabel": {
+        "description": "Label for the action button on the sign in failure dialog"
+    },
+    "signInPageNavigationBarTitle": "Sign in",
+    "@signInPageNavigationBarTitle": {
+        "description": "Title for the navigation bar on the sign in page"
+    },
+    "signInPageUsernameTextFieldPlaceholder": "Your username",
+    "@signInPageUsernameTextFieldPlaceholder": {
+        "description": "Placeholder for the username text field on the sign in page"
+    },
+    "signInPagePasswordTextFieldPlaceholder": "Your password",
+    "@signInPagePasswordTextFieldPlaceholder": {
+        "description": "Placeholder for the password text field on the sign in page"
+    },
+    "signInPageSubmitButtonLabel": "Sign in",
+    "@signInPageSubmitButtonLabel": {
+        "description": "Label for the submit button on the sign in page"
+    },
+    "signInPageCreateAccountButtonLabel": "I don't have an account",
+    "@signInPageCreateAccountButtonLabel": {
+        "description": "Label for the create account button on the sign in page"
+    },
+    "signUpPageFailureDialogTitle": "Sign up failure",
+    "@signUpPageFailureDialogTitle": {
+        "description": "Title for the sign up failure dialog"
+    },
+    "signUpPageFailureDialogContent": "Please try again later.",
+    "@signUpPageFailureDialogContent": {
+        "description": "Content for the sign up failure dialog"
+    },
+    "signUpPageFailureDialogActionLabel": "OK",
+    "@signUpPageFailureDialogActionLabel": {
+        "description": "Label for the action button on the sign up failure dialog"
+    },
+    "signUpPageNavigationBarTitle": "Sign up",
+    "@signUpPageNavigationBarTitle": {
+        "description": "Title for the navigation bar on the sign up page"
+    },
+    "signUpPageUsernameTextFieldPlaceholder": "Your username",
+    "@signUpPageUsernameTextFieldPlaceholder": {
+        "description": "Placeholder for the username text field on the sign up page"
+    },
+    "signUpPagePasswordTextFieldPlaceholder": "Your password",
+    "@signUpPagePasswordTextFieldPlaceholder": {
+        "description": "Placeholder for the password text field on the sign up page"
+    },
+    "signUpPageSubmitButtonLabel": "Create account",
+    "@signUpPageSubmitButtonLabel": {
+        "description": "Label for the submit button on the sign up page"
+    },
+    "createPassSheetSubmitButtonLabel": "Get my ticket!",
+    "@createPassSheetSubmitButtonLabel": {
+        "description": "Label for the submit button on the create pass sheet"
+    },
+    "homePageNavigationBarTitle": "My passes",
+    "@homePageNavigationBarTitle": {
+        "description": "Title for the navigation bar on the home page"
+    },
+    "homePageEmptyPassListText": "You do not have passes yet...",
+    "@homePageEmptyPassListText": {
+        "description": "Text to display when the pass list is empty"
+    },
+    "passDetailPageNavigationBarTitle": "Pass details",
+    "@passDetailPageNavigationBarTitle": {
+        "description": "Title for the navigation bar on the pass detail page"
+    },
+    "passDetailPageAddToWalletButtonLabel": "Add to Wallet",
+    "@passDetailPageAddToWalletButtonLabel": {
+        "description": "Label for the add to wallet button on the pass detail page"
     }
 }
