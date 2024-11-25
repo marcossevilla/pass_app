@@ -20,3 +20,4 @@ jobs:
       coverage_excludes: "**/*.g.dart"
       working_directory: api
       analyze_directories: "routes test lib"
+      report_on: "routes"
