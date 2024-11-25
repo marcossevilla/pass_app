@@ -10,7 +10,6 @@ dependencies:
   api_models:
     path: ../../../packages/api_models
   collection: ^1.19.0
-  equatable: ^2.0.5
   hive_ce: ^2.6.0
   json_annotation: ^4.9.0
   meta: ^1.16.0
