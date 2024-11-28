@@ -26,7 +26,10 @@ Future<Response> _createUser(RequestContext context) async {
       password: password,
     );
 
-    return Response.json(body: {'id': id});
+    return Response.json(
+      statusCode: HttpStatus.created,
+      body: {'id': id},
+    );
   }
 
   return Response(statusCode: HttpStatus.badRequest);
@@ -36,7 +39,11 @@ Future<Response> _getUser(RequestContext context) async {
   final userRepository = await context.readAsync<UserRepository>();
   final queryParams = context.request.uri.queryParameters;
 
-  final user = await userRepository.userFromCredentials(
+  if (queryParams['username'] == null || queryParams['password'] == null) {
+    return Response(statusCode: HttpStatus.badRequest);
+  }
+
+  final user = userRepository.userFromCredentials(
     queryParams['username']!,
     queryParams['password']!,
   );

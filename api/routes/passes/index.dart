@@ -16,7 +16,15 @@ FutureOr<Response> onRequest(RequestContext context) {
 
 Future<Response> _get(RequestContext context) async {
   final passDataSource = await context.readAsync<PassDataSource>();
-  final userId = context.request.uri.queryParameters['userId']!;
+  final userId = context.request.uri.queryParameters['userId'];
+
+  if (userId == null) {
+    return Response(
+      statusCode: HttpStatus.badRequest,
+      body: 'Missing query parameter: userId',
+    );
+  }
+
   final passes = await passDataSource.readByUserId(userId);
   final body = passes.map((pass) => {'data': base64.encode(pass)}).toList();
 
@@ -25,7 +33,15 @@ Future<Response> _get(RequestContext context) async {
 
 Future<Response> _post(RequestContext context) async {
   final passDataSource = await context.readAsync<PassDataSource>();
-  final userId = context.request.uri.queryParameters['userId']!;
+  final userId = context.request.uri.queryParameters['userId'];
+
+  if (userId == null) {
+    return Response(
+      statusCode: HttpStatus.badRequest,
+      body: 'Missing query parameter: userId',
+    );
+  }
+
   final body = await context.request.body();
   final bodyJson = json.decode(body) as Map<String, dynamic>;
 

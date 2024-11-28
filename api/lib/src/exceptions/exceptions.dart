@@ -12,9 +12,7 @@ class BadRequest implements Exception {
   final Map<String, dynamic> data;
 
   /// Converts the [BadRequest] to a JSON-encodable [Map].
-  Map<String, dynamic> toJson() {
-    return {'type': type, 'data': data};
-  }
+  Map<String, dynamic> toJson() => {'type': type, 'data': data};
 }
 
 /// {@template not_found}
@@ -31,7 +29,5 @@ class NotFound implements Exception {
   final Map<String, dynamic> data;
 
   /// Converts the [NotFound] to a JSON-encodable [Map].
-  Map<String, dynamic> toJson() {
-    return {'type': type, 'data': data};
-  }
+  Map<String, dynamic> toJson() => {'type': type, 'data': data};
 }

@@ -1,2 +1,2 @@
-export 'exceptions/exceptions.dart';
-export 'extensions/extensions.dart';
+export 'src/exceptions/exceptions.dart';
+export 'src/extensions/extensions.dart';

@@ -13,7 +13,7 @@ Middleware authenticationProvider() {
   return basicAuthentication<User>(
     authenticator: (context, username, password) async {
       final userRepository = await context.readAsync<UserRepository>();
-      final user = await userRepository.userFromCredentials(username, password);
+      final user = userRepository.userFromCredentials(username, password);
       return user;
     },
     applies: (context) async {
