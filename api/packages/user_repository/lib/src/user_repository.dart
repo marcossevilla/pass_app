@@ -24,7 +24,7 @@ class UserRepository {
   ///
   /// The received password should be in plain text, and will be hashed, so it
   /// can be compared to the stored password hash.
-  Future<User?> userFromCredentials(String username, String password) async {
+  User? userFromCredentials(String username, String password) {
     try {
       final hashedPassword = _hashValue(password);
       final records = _dbClient.getBy(

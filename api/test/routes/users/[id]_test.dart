@@ -15,7 +15,7 @@ class _MockRequestContext extends Mock implements RequestContext {}
 class _MockUserRepository extends Mock implements UserRepository {}
 
 void main() {
-  group('[id]', () {
+  group('/users/[id]', () {
     late RequestContext context;
     late UserRepository userRepository;
     late User user;

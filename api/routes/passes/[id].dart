@@ -16,7 +16,7 @@ FutureOr<Response> onRequest(RequestContext context, String id) {
 Future<Response> _get(RequestContext context, String id) async {
   try {
     final passDataSource = await context.readAsync<PassDataSource>();
-    final pass = await passDataSource.read(id);
+    final pass = passDataSource.read(id);
     return Response.json(
       body: {
         'data': base64.encode(pass),

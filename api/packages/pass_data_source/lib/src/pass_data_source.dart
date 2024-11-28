@@ -67,7 +67,7 @@ class PassDataSource {
   }
 
   /// Reads a single [PkPass] object.
-  Future<Uint8List> read(String id) async {
+  Uint8List read(String id) {
     try {
       final record = _dbClient.get(DataBox.passes, id: id);
       final pass = UserPass.fromJson(record.data);
