@@ -19,7 +19,7 @@ This project has a VSCode configuration under `.vscode/launch.json` that expects
 ```json
 {
     "TEAM_IDENTIFIER": "MY_TEAM_IDENTIFIER",
-    "PASS_TYPE_IDENTIFIER": "com.mycompany.mypassapp"
+    "PASS_TYPE_IDENTIFIER": "com.my_company.my_pass_app"
 }
 ```
 
