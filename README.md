@@ -12,13 +12,28 @@ A full-stack application to show Apple PassKit functionality.
 
 ## Getting Started 🚀
 
+### Configuration Files 📁
+
+This project has a VSCode configuration under `.vscode/launch.json` that expects an env.json file at the root of the project.
+
+```json
+{
+    "TEAM_IDENTIFIER": "MY_TEAM_IDENTIFIER",
+    "PASS_TYPE_IDENTIFIER": "com.mycompany.mypassapp"
+}
+```
+
+And requires the `certificate.pem` and `private_key.pem` files to be present in this directory `api/data/`. You can check the PassKit Signing documentation [here](https://github.com/ueman/passkit/blob/master/passkit/SIGNING.md) to learn more about how to generate these files.
+
+### Flavors 🍦
+
 This project contains 3 flavors:
 
 - development
 - staging
 - production
 
-To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the following commands:
+To run the desired flavor either use the launch configuration in VSCode or use the following commands:
 
 ```sh
 # Development
@@ -31,7 +46,7 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*Pass App works on iOS, Android, Web, and Windows._
+_\*Pass App works on iOS only, due to Apple Wallet integrations._
 
 ---
 
