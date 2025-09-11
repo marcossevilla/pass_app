@@ -52,9 +52,7 @@ class PassDetailView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 vertical: 32,
               ),
-              child: PkPassWidget(
-                pass: pass,
-              ),
+              child: PkPassWidget(pass: pass),
             ),
           ),
           SliverToBoxAdapter(
@@ -62,9 +60,9 @@ class PassDetailView extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: CupertinoButton.filled(
                 child: Text(l10n.passDetailPageAddToWalletButtonLabel),
-                onPressed: () => context
-                    .read<PassDetailBloc>()
-                    .add(PassDetailPassAdded(pass)),
+                onPressed: () => context.read<PassDetailBloc>().add(
+                  PassDetailPassAdded(pass),
+                ),
               ),
             ),
           ),

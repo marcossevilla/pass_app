@@ -76,13 +76,13 @@ class HomeContent extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           CupertinoSliverNavigationBar(
-            alwaysShowMiddle: false,
             stretch: true,
+            alwaysShowMiddle: false,
             leading: const FlutterLogo(),
             largeTitle: Text(l10n.homePageNavigationBarTitle),
             trailing: GestureDetector(
               onTap: () async {
-                await Navigator.of(context).push(
+                await Navigator.of(context, rootNavigator: true).push(
                   CreatePassSheet.route(
                     createPassBloc: context.read<CreatePassBloc>(),
                   ),
@@ -136,9 +136,9 @@ class PassList extends StatelessWidget {
               eventTicket?.auxiliaryFields?[1].value.toString() ?? '',
             ),
             onTap: () async {
-              await Navigator.of(
-                context,
-              ).push<void>(PassDetailPage.route(pass: pass));
+              await Navigator.of(context).push<void>(
+                PassDetailPage.route(pass: pass),
+              );
             },
           );
         }),

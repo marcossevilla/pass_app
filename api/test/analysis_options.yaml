@@ -1,4 +1,4 @@
-include: package:very_good_analysis/analysis_options.yaml
+include: package:dart_frog_lint/recommended.yaml
 linter:
   rules:
     file_names: false

@@ -1,22 +1,16 @@
 PODS:
-  - apple_passkit (0.0.1):
-    - Flutter
   - Flutter (1.0.0)
 
 DEPENDENCIES:
-  - apple_passkit (from `.symlinks/plugins/apple_passkit/ios`)
   - Flutter (from `Flutter`)
 
 EXTERNAL SOURCES:
-  apple_passkit:
-    :path: ".symlinks/plugins/apple_passkit/ios"
   Flutter:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  apple_passkit: 61e6ce1062d3c413e29391979b64b025f461ddf8
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
 
-PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+PODFILE CHECKSUM: 4f1c12611da7338d21589c0b2ecd6bd20b109694
 
 COCOAPODS: 1.15.2
