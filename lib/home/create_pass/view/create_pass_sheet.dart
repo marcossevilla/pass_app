@@ -4,8 +4,6 @@ import 'package:formz/formz.dart';
 import 'package:pass_app/app/app.dart';
 import 'package:pass_app/home/create_pass/create_pass.dart';
 import 'package:pass_app/l10n/l10n.dart';
-import 'package:sheet/route.dart';
-import 'package:sheet/sheet.dart';
 
 class CreatePassSheet extends StatelessWidget {
   const CreatePassSheet({super.key});
@@ -14,7 +12,6 @@ class CreatePassSheet extends StatelessWidget {
 
   static Route<void> route({required CreatePassBloc createPassBloc}) {
     return CupertinoSheetRoute(
-      fit: SheetFit.loose,
       builder: (context) => BlocProvider.value(
         value: createPassBloc,
         child: const CreatePassSheet(),
@@ -25,39 +22,34 @@ class CreatePassSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SheetMediaQuery(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CupertinoTextField(
-              placeholder: 'Your name',
-              onChanged: (name) {
-                context.read<CreatePassBloc>().add(PassNameChanged(name));
-              },
-            ),
-            const SizedBox(height: 16),
-            CupertinoTextField(
-              placeholder: 'Your job title',
-              onChanged: (title) {
-                context.read<CreatePassBloc>().add(PassTitleChanged(title));
-              },
-            ),
-            const SizedBox(height: 16),
-            CupertinoTextField(
-              placeholder: 'Your company',
-              onChanged: (company) {
-                context.read<CreatePassBloc>().add(PassCompanyChanged(company));
-              },
-            ),
-            const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: SubmitButton(),
-            ),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CupertinoTextField(
+            placeholder: 'Your name',
+            onChanged: (name) {
+              context.read<CreatePassBloc>().add(PassNameChanged(name));
+            },
+          ),
+          const SizedBox(height: 16),
+          CupertinoTextField(
+            placeholder: 'Your job title',
+            onChanged: (title) {
+              context.read<CreatePassBloc>().add(PassTitleChanged(title));
+            },
+          ),
+          const SizedBox(height: 16),
+          CupertinoTextField(
+            placeholder: 'Your company',
+            onChanged: (company) {
+              context.read<CreatePassBloc>().add(PassCompanyChanged(company));
+            },
+          ),
+          const SizedBox(height: 16),
+          const Padding(padding: EdgeInsets.all(16), child: SubmitButton()),
+        ],
       ),
     );
   }

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:io';
 
 import 'package:api/api.dart';
@@ -30,9 +28,11 @@ void main() {
 
       await handler(context);
 
-      final create = verify(
-        () => context.provide<Future<DbClient>>(captureAny()),
-      ).captured.single as Future<DbClient> Function();
+      final create =
+          verify(
+                () => context.provide<Future<DbClient>>(captureAny()),
+              ).captured.single
+              as Future<DbClient> Function();
 
       await expectLater(
         create(),

@@ -11,7 +11,7 @@ class UserRepository {
   /// {@macro user_repository}
   UserRepository({required DbClient dbClient}) : _dbClient = dbClient;
 
-  static const _box = DataBox.users;
+  static const DataBox _box = DataBox.users;
 
   final DbClient _dbClient;
 
@@ -36,7 +36,7 @@ class UserRepository {
       );
       final users = records.map((record) => User.fromJson(record.data));
       return users.firstOrNull;
-    } catch (_) {
+    } on Exception catch (_) {
       return null;
     }
   }
@@ -46,7 +46,7 @@ class UserRepository {
     try {
       final user = _dbClient.get(_box, id: id);
       return User.fromJson(user.data);
-    } catch (_) {
+    } on Exception catch (_) {
       return null;
     }
   }
@@ -74,7 +74,7 @@ class UserRepository {
       );
 
       return id;
-    } catch (error) {
+    } on Exception catch (error) {
       throw Exception('Error creating user: $error');
     }
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart' show FlutterLogo;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:pass_app/app/app.dart';
@@ -12,17 +11,14 @@ class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
 
   static Page<void> page() {
-    return const CupertinoPage<void>(
-      child: SignInPage(),
-    );
+    return const CupertinoPage<void>(child: SignInPage());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignInBloc(
-        userRepository: context.read<UserRepository>(),
-      ),
+      create: (context) =>
+          SignInBloc(userRepository: context.read<UserRepository>()),
       child: const SignInView(),
     );
   }
@@ -91,9 +87,9 @@ class SignInContent extends StatelessWidget {
                 CupertinoTextField(
                   placeholder: l10n.signInPageUsernameTextFieldPlaceholder,
                   onChanged: (username) {
-                    context
-                        .read<SignInBloc>()
-                        .add(SignInUsernameChanged(username));
+                    context.read<SignInBloc>().add(
+                      SignInUsernameChanged(username),
+                    );
                   },
                 ),
                 const SizedBox(height: 16),
@@ -101,9 +97,9 @@ class SignInContent extends StatelessWidget {
                   placeholder: l10n.signInPagePasswordTextFieldPlaceholder,
                   obscureText: true,
                   onChanged: (password) {
-                    context
-                        .read<SignInBloc>()
-                        .add(SignInPasswordChanged(password));
+                    context.read<SignInBloc>().add(
+                      SignInPasswordChanged(password),
+                    );
                   },
                 ),
                 const SizedBox(height: 16),
@@ -116,9 +112,9 @@ class SignInContent extends StatelessWidget {
                   child: CupertinoButton(
                     child: Text(l10n.signInPageCreateAccountButtonLabel),
                     onPressed: () async {
-                      await Navigator.of(context).push<void>(
-                        SignUpPage.route(),
-                      );
+                      await Navigator.of(
+                        context,
+                      ).push<void>(SignUpPage.route());
                     },
                   ),
                 ),

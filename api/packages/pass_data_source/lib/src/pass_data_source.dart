@@ -14,8 +14,8 @@ class PassDataSource {
   PassDataSource({
     required DbClient dbClient,
     Uuid uuid = const Uuid(),
-  })  : _uuid = uuid,
-        _dbClient = dbClient;
+  }) : _uuid = uuid,
+       _dbClient = dbClient;
 
   final Uuid _uuid;
 
@@ -45,7 +45,7 @@ class PassDataSource {
       }
 
       return binaryData;
-    } catch (e) {
+    } on Exception catch (e) {
       throw Exception('Error signing pass: $e');
     }
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart' show FlutterLogo;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pass_app/app/app.dart';
 import 'package:pass_app/home/create_pass/create_pass.dart';
@@ -13,9 +12,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   static Page<void> page() {
-    return const CupertinoPage<void>(
-      child: HomePage(),
-    );
+    return const CupertinoPage<void>(child: HomePage());
   }
 
   @override
@@ -30,14 +27,13 @@ class HomePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => HomeBloc(
-            passRepository: context.read<PassRepository>(),
-          )..add(HomePassesRequested(userId!)),
+          create: (context) =>
+              HomeBloc(passRepository: context.read<PassRepository>())
+                ..add(HomePassesRequested(userId!)),
         ),
         BlocProvider(
-          create: (context) => CreatePassBloc(
-            passRepository: context.read<PassRepository>(),
-          ),
+          create: (context) =>
+              CreatePassBloc(passRepository: context.read<PassRepository>()),
         ),
       ],
       child: const HomeView(),
@@ -98,17 +94,12 @@ class HomeContent extends StatelessWidget {
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) => switch (state.status) {
               HomeStatus.initial ||
-              HomeStatus.loading =>
-                const SliverFillRemaining(
-                  child: Center(
-                    child: CupertinoActivityIndicator(),
-                  ),
-                ),
+              HomeStatus.loading => const SliverFillRemaining(
+                child: Center(child: CupertinoActivityIndicator()),
+              ),
               HomeStatus.failure => SliverFillRemaining(
-                  child: Center(
-                    child: Text(l10n.genericFailureText),
-                  ),
-                ),
+                child: Center(child: Text(l10n.genericFailureText)),
+              ),
               HomeStatus.success => PassList(passes: state.passes),
             },
           ),
@@ -119,10 +110,7 @@ class HomeContent extends StatelessWidget {
 }
 
 class PassList extends StatelessWidget {
-  const PassList({
-    required this.passes,
-    super.key,
-  });
+  const PassList({required this.passes, super.key});
 
   final List<PkPass> passes;
 
@@ -130,37 +118,30 @@ class PassList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (passes.isEmpty) {
       return SliverFillRemaining(
-        child: Center(
-          child: Text(context.l10n.homePageEmptyPassListText),
-        ),
+        child: Center(child: Text(context.l10n.homePageEmptyPassListText)),
       );
     }
 
     return SliverList.list(
       children: [
-        ...passes.map(
-          (pass) {
-            final eventTicket = pass.pass.eventTicket;
-            return CupertinoListTile(
-              padding: const EdgeInsets.symmetric(
-                vertical: 12,
-                horizontal: 24,
-              ),
-              leading: const Icon(CupertinoIcons.person_fill),
-              title: Text(
-                eventTicket?.auxiliaryFields?.first.value.toString() ?? '',
-              ),
-              subtitle: Text(
-                eventTicket?.auxiliaryFields?[1].value.toString() ?? '',
-              ),
-              onTap: () async {
-                await Navigator.of(context).push<void>(
-                  PassDetailPage.route(pass: pass),
-                );
-              },
-            );
-          },
-        ),
+        ...passes.map((pass) {
+          final eventTicket = pass.pass.eventTicket;
+          return CupertinoListTile(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+            leading: const Icon(CupertinoIcons.person_fill),
+            title: Text(
+              eventTicket?.auxiliaryFields?.first.value.toString() ?? '',
+            ),
+            subtitle: Text(
+              eventTicket?.auxiliaryFields?[1].value.toString() ?? '',
+            ),
+            onTap: () async {
+              await Navigator.of(
+                context,
+              ).push<void>(PassDetailPage.route(pass: pass));
+            },
+          );
+        }),
       ],
     );
   }

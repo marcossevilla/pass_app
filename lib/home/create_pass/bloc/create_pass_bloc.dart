@@ -11,8 +11,8 @@ part 'create_pass_state.dart';
 class CreatePassBloc extends Bloc<CreatePassEvent, CreatePassState> {
   CreatePassBloc({
     required PassRepository passRepository,
-  })  : _passRepository = passRepository,
-        super(const CreatePassState()) {
+  }) : _passRepository = passRepository,
+       super(const CreatePassState()) {
     on<PassNameChanged>(_onNameChanged);
     on<PassTitleChanged>(_onTitleChanged);
     on<PassCompanyChanged>(_onCompanyChanged);
@@ -80,7 +80,7 @@ class CreatePassBloc extends Bloc<CreatePassEvent, CreatePassState> {
           status: FormzSubmissionStatus.success,
         ),
       );
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(
         state.copyWith(

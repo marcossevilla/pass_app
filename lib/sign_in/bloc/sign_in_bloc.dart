@@ -10,8 +10,8 @@ part 'sign_in_state.dart';
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc({
     required UserRepository userRepository,
-  })  : _userRepository = userRepository,
-        super(const SignInState()) {
+  }) : _userRepository = userRepository,
+       super(const SignInState()) {
     on<SignInUsernameChanged>(_onUsernameChanged);
     on<SignInPasswordChanged>(_onPasswordChanged);
     on<SignInFormSubmitted>(_onFormSubmitted);
@@ -65,8 +65,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           status: FormzSubmissionStatus.success,
         ),
       );
-    } catch (error) {
-      addError(error);
+    } on Exception catch (error, stackTrace) {
+      addError(error, stackTrace);
       emit(
         state.copyWith(
           status: FormzSubmissionStatus.failure,
