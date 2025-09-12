@@ -9,8 +9,8 @@ environment:
 dependencies:
   api_models:
     path: ../packages/api_models
-  dart_frog: ^1.0.0
-  dart_frog_auth: ^1.1.0
+  dart_frog: ^1.2.3
+  dart_frog_auth: ^1.2.1
   db_client:
     path: packages/db_client
   pass_data_source:

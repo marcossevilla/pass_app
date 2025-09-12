@@ -1,6 +1,6 @@
 name: user_repository
 description: A package that manages the user domain.
-version: 0.1.0+1
+version: 0.1.0
 publish_to: none
 
 environment:
