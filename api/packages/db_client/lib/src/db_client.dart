@@ -21,9 +21,9 @@ class DbClient {
     required Box<DbEntityRecord> usersBox,
     required Box<DbEntityRecord> passesBox,
     Uuid uuid = const Uuid(),
-  })  : _uuid = uuid,
-        _usersBox = usersBox,
-        _passesBox = passesBox;
+  }) : _uuid = uuid,
+       _usersBox = usersBox,
+       _passesBox = passesBox;
 
   final Uuid _uuid;
   final Box<DbEntityRecord> _usersBox;

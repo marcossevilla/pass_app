@@ -11,8 +11,8 @@ class App extends StatelessWidget {
     required UserRepository userRepository,
     required PassRepository passRepository,
     super.key,
-  })  : _userRepository = userRepository,
-        _passRepository = passRepository;
+  }) : _userRepository = userRepository,
+       _passRepository = passRepository;
 
   final UserRepository _userRepository;
   final PassRepository _passRepository;
