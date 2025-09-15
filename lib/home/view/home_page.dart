@@ -27,13 +27,14 @@ class HomePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              HomeBloc(passRepository: context.read<PassRepository>())
-                ..add(HomePassesRequested(userId!)),
+          create: (context) => HomeBloc(
+            passRepository: context.read<PassRepository>(),
+          )..add(HomePassesRequested(userId!)),
         ),
         BlocProvider(
-          create: (context) =>
-              CreatePassBloc(passRepository: context.read<PassRepository>()),
+          create: (context) => CreatePassBloc(
+            passRepository: context.read<PassRepository>(),
+          ),
         ),
       ],
       child: const HomeView(),
@@ -82,7 +83,7 @@ class HomeContent extends StatelessWidget {
             largeTitle: Text(l10n.homePageNavigationBarTitle),
             trailing: GestureDetector(
               onTap: () async {
-                await Navigator.of(context, rootNavigator: true).push(
+                await Navigator.of(context).push(
                   CreatePassSheet.route(
                     createPassBloc: context.read<CreatePassBloc>(),
                   ),

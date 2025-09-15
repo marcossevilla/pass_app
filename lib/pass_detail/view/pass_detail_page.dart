@@ -37,32 +37,39 @@ class PassDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final pass = context.select((PassDetailBloc bloc) => bloc.state.pass);
+    final pass = context.select(
+      (PassDetailBloc bloc) => bloc.state.pass,
+    );
+    final viewInsets = MediaQuery.viewPaddingOf(context);
 
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.lightBackgroundGray,
-      child: CustomScrollView(
-        slivers: [
-          CupertinoSliverNavigationBar(
-            previousPageTitle: l10n.homePageNavigationBarTitle,
-            largeTitle: Text(l10n.passDetailPageNavigationBarTitle),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 32,
+      child: Stack(
+        children: [
+          CustomScrollView(
+            slivers: [
+              CupertinoSliverNavigationBar(
+                previousPageTitle: l10n.homePageNavigationBarTitle,
+                largeTitle: Text(l10n.passDetailPageNavigationBarTitle),
               ),
-              child: PkPassWidget(pass: pass),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: CupertinoButton.filled(
-                child: Text(l10n.passDetailPageAddToWalletButtonLabel),
-                onPressed: () => context.read<PassDetailBloc>().add(
-                  PassDetailPassAdded(pass),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 32,
+                  ),
+                  child: PkPassWidget(pass: pass),
                 ),
+              ),
+            ],
+          ),
+          Positioned(
+            left: 16,
+            right: 16,
+            bottom: viewInsets.bottom + 16,
+            child: CupertinoButton.filled(
+              child: Text(l10n.passDetailPageAddToWalletButtonLabel),
+              onPressed: () => context.read<PassDetailBloc>().add(
+                PassDetailPassAdded(pass),
               ),
             ),
           ),

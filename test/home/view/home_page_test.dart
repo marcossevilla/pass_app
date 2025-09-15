@@ -8,11 +8,10 @@ import 'package:pass_app/app/app.dart';
 import 'package:pass_app/home/create_pass/create_pass.dart';
 import 'package:pass_app/home/home.dart';
 import 'package:pass_app/pass_detail/pass_detail.dart';
+import 'package:pass_repository/pass_repository.dart';
 import 'package:passkit/passkit.dart';
 
 import '../../helpers/helpers.dart';
-
-class _MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
 
 class _MockHomeBloc extends MockBloc<HomeEvent, HomeState>
     implements HomeBloc {}
@@ -43,12 +42,14 @@ class _FakePassStructure extends Fake implements PassStructure {
 }
 
 void main() {
-  group('HomePage', () {
+  group(HomePage, () {
+    late PassRepository passRepository;
     late AppBloc appBloc;
     late Widget widgetToTest;
 
     setUp(() {
-      appBloc = _MockAppBloc();
+      passRepository = MockPassRepository();
+      appBloc = MockAppBloc();
 
       when(() => appBloc.state).thenReturn(AppAuthenticated(_FakeUser()));
 
@@ -56,27 +57,34 @@ void main() {
     });
 
     test(
-      'page returns a CupertinoPage',
+      'page returns a $CupertinoPage',
       () => expect(HomePage.page(), isA<CupertinoPage<void>>()),
     );
 
-    testWidgets('renders HomeView', (tester) async {
+    testWidgets('renders $HomeView', (tester) async {
+      when(
+        () => passRepository.getPassesForUser(
+          userId: any(named: 'userId'),
+        ),
+      ).thenAnswer((_) => Future.value([]));
+
       await tester.pumpApp(
         widgetToTest,
         appBloc: appBloc,
+        passRepository: passRepository,
       );
       expect(find.byType(HomeView), findsOneWidget);
     });
   });
 
-  group('HomeView', () {
+  group(HomeView, () {
     late AppBloc appBloc;
     late HomeBloc homeBloc;
     late CreatePassBloc createPassBloc;
     late Widget widgetToTest;
 
     setUp(() {
-      appBloc = _MockAppBloc();
+      appBloc = MockAppBloc();
       homeBloc = _MockHomeBloc();
       createPassBloc = _MockCreatePassBloc();
 
@@ -93,7 +101,7 @@ void main() {
       );
     });
 
-    testWidgets('renders HomeContent', (tester) async {
+    testWidgets('renders $HomeContent', (tester) async {
       await tester.pumpApp(
         widgetToTest,
         appBloc: appBloc,
@@ -102,7 +110,7 @@ void main() {
     });
 
     testWidgets(
-      'adds HomePassesRequested when pass changes and is not null',
+      'adds $HomePassesRequested when pass changes and is not null',
       (tester) async {
         whenListen(
           createPassBloc,
@@ -119,7 +127,7 @@ void main() {
     );
   });
 
-  group('HomeContent', () {
+  group(HomeContent, () {
     late AppBloc appBloc;
     late HomeBloc homeBloc;
     late CreatePassBloc createPassBloc;
@@ -127,7 +135,7 @@ void main() {
     late Widget widgetToTest;
 
     setUp(() {
-      appBloc = _MockAppBloc();
+      appBloc = MockAppBloc();
       homeBloc = _MockHomeBloc();
       createPassBloc = _MockCreatePassBloc();
       navigator = MockNavigator();
@@ -148,7 +156,7 @@ void main() {
     });
 
     testWidgets(
-      'renders CreatePassSheet when tapping on add button',
+      'renders $CreatePassSheet when tapping on add button',
       (tester) async {
         await tester.pumpApp(
           widgetToTest,
@@ -187,7 +195,7 @@ void main() {
       },
     );
 
-    group('PassList', () {
+    group(PassList, () {
       testWidgets('renders no passes message', (tester) async {
         when(() => homeBloc.state).thenReturn(
           HomeState(
@@ -225,7 +233,7 @@ void main() {
       });
 
       testWidgets(
-        'navigates to PassDetailPage when tapping a tile',
+        'navigates to $PassDetailPage when tapping a tile',
         (tester) async {
           when(() => homeBloc.state).thenReturn(
             HomeState(
