@@ -20,7 +20,7 @@ class EventPassRequest extends Equatable {
       primaryFields: [
         FieldDict(
           key: 'eventName',
-          value: 'FlutterConf Latam 2024',
+          value: 'Fluttercon Europe 2025',
           label: 'Event',
           changeMessage: '',
           textAlignment: PkTextAlignment.left,
@@ -38,7 +38,7 @@ class EventPassRequest extends Equatable {
       backFields: [
         FieldDict(
           key: 'doorsAdmission',
-          value: '2024-10-29 07:00',
+          value: '2025-09-26 10:00',
           label: 'Admission time',
           changeMessage: '',
           textAlignment: PkTextAlignment.left,
@@ -59,14 +59,14 @@ class EventPassRequest extends Equatable {
         ),
         FieldDict(
           key: 'organizer',
-          value: 'FlutterConf Latam',
+          value: 'Fluttercon Europe',
           label: 'Organizer',
           changeMessage: '',
           textAlignment: PkTextAlignment.left,
         ),
         FieldDict(
           key: 'organizerContact',
-          value: 'flutterconflatam@gmail.com',
+          value: 'fluttercon@droidcon.de',
           label: 'Organizer contact',
           changeMessage: '',
           textAlignment: PkTextAlignment.left,
@@ -80,14 +80,14 @@ class EventPassRequest extends Equatable {
         ),
         FieldDict(
           key: 'purchaseDate',
-          value: '2024-10-30 14:00',
+          value: '2025-09-20 00:00',
           label: 'Purchase date',
           changeMessage: '',
           textAlignment: PkTextAlignment.left,
         ),
         FieldDict(
           key: 'website',
-          value: 'https://flutterconflatam.dev/',
+          value: 'https://www.fluttercon.dev/',
           label: 'Website',
           changeMessage: '',
           textAlignment: PkTextAlignment.left,
@@ -118,20 +118,20 @@ class EventPassRequest extends Equatable {
     return PassData(
       teamIdentifier: const String.fromEnvironment('TEAM_IDENTIFIER'),
       passTypeIdentifier: const String.fromEnvironment('PASS_TYPE_IDENTIFIER'),
-      logoText: 'FlutterConf Latam 2024',
-      description: 'FlutterConf Latam 2024 Event Ticket',
-      serialNumber: 'flutterconf-latam24',
-      organizationName: 'FlutterConf Latam',
+      logoText: 'Fluttercon Europe 2025',
+      description: 'Fluttercon Europe 2025 Event Ticket',
+      serialNumber: 'fluttercon-europe25',
+      organizationName: 'Fluttercon Europe',
       eventTicket: eventTicket,
       suppressStripShine: false,
-      labelColor: parseColor('#ca4d4f'),
+      labelColor: parseColor('#55BAF9'),
       backgroundColor: parseColor('#FFFFFF'),
       foregroundColor: parseColor('#000000'),
-      locations: [Location(latitude: -16.39889, longitude: -71.535)],
+      locations: [Location(latitude: 52.5, longitude: 13.4)],
       barcodes: [
         Barcode(
           format: PkPassBarcodeType.qr,
-          message: 'https://flutterconflatam.dev/',
+          message: 'https://fluttercon.dev/',
           messageEncoding: 'iso-8859-1',
         ),
       ],

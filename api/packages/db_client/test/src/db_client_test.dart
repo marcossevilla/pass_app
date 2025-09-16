@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:db_client/db_client.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:mocktail/mocktail.dart';
@@ -8,7 +6,7 @@ import 'package:uuid/uuid.dart';
 
 class _MockUuid extends Mock implements Uuid {}
 
-class _MockBox<DbEntityRecord> extends Mock implements Box<DbEntityRecord> {}
+class _MockBox extends Mock implements Box<DbEntityRecord> {}
 
 class _FakeDbEntityRecord extends Fake implements DbEntityRecord {
   @override
@@ -16,7 +14,7 @@ class _FakeDbEntityRecord extends Fake implements DbEntityRecord {
 }
 
 void main() {
-  group('DbClient', () {
+  group(DbClient, () {
     setUpAll(() {
       registerFallbackValue(_FakeDbEntityRecord());
     });
@@ -33,21 +31,13 @@ void main() {
 
       when(() => uuid.v4(config: any(named: 'config'))).thenReturn('id');
 
-      dbClient = DbClient(
-        uuid: uuid,
-        usersBox: usersBox,
-        passesBox: passesBox,
-      );
+      dbClient = DbClient(uuid: uuid, usersBox: usersBox, passesBox: passesBox);
     });
 
     test(
       'can instantiate',
       () => expect(
-        DbClient(
-          uuid: uuid,
-          usersBox: usersBox,
-          passesBox: passesBox,
-        ),
+        DbClient(uuid: uuid, usersBox: usersBox, passesBox: passesBox),
         isNotNull,
       ),
     );
@@ -61,9 +51,9 @@ void main() {
 
     group('add', () {
       test('returns the expected id when adding a new record', () async {
-        when(() => usersBox.put(any<Object>(), any())).thenAnswer(
-          (_) => Future.value(),
-        );
+        when(
+          () => usersBox.put(any<Object>(), any()),
+        ).thenAnswer((_) => Future.value());
 
         await expectLater(
           dbClient.add(DataBox.users, data: {}),
@@ -90,10 +80,7 @@ void main() {
           ),
         ).thenReturn(_FakeDbEntityRecord());
 
-        expect(
-          dbClient.get(DataBox.users, id: 'id'),
-          isA<DbEntityRecord>(),
-        );
+        expect(dbClient.get(DataBox.users, id: 'id'), isA<DbEntityRecord>());
       });
 
       test('throws when box returns null', () {
@@ -133,9 +120,9 @@ void main() {
 
     group('update', () {
       test('completes when updating a record', () async {
-        when(() => usersBox.put(any<Object>(), any())).thenAnswer(
-          (_) => Future.value(),
-        );
+        when(
+          () => usersBox.put(any<Object>(), any()),
+        ).thenAnswer((_) => Future.value());
 
         await expectLater(
           dbClient.update(DataBox.users, record: DbEntityRecord(id: 'id')),

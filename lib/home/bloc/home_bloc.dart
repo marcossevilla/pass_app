@@ -9,8 +9,8 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     required PassRepository passRepository,
-  })  : _passRepository = passRepository,
-        super(const HomeState()) {
+  }) : _passRepository = passRepository,
+       super(const HomeState()) {
     on<HomePassesRequested>(_onPassesRequested);
   }
 
@@ -35,7 +35,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           status: HomeStatus.success,
         ),
       );
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(
         state.copyWith(status: HomeStatus.failure),

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -24,7 +22,7 @@ class _FakeFile extends Fake implements File {
 }
 
 void main() {
-  group('PassDataSource', () {
+  group(PassDataSource, () {
     late Uuid uuid;
     late DbClient dbClient;
     late PkPass pkPass;

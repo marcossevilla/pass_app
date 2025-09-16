@@ -22,7 +22,7 @@ Future<Response> _get(RequestContext context, String id) async {
         'data': base64.encode(pass),
       },
     );
-  } catch (e) {
+  } on Exception catch (_) {
     return Response(
       statusCode: HttpStatus.notFound,
       body: 'Not found',

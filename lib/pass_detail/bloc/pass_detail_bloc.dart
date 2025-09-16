@@ -10,8 +10,8 @@ class PassDetailBloc extends Bloc<PassDetailEvent, PassDetailState> {
   PassDetailBloc({
     required PkPass pass,
     ApplePassKit? passKit,
-  })  : _passKit = passKit ?? ApplePassKit(),
-        super(PassDetailState(pass: pass)) {
+  }) : _passKit = passKit ?? ApplePassKit(),
+       super(PassDetailState(pass: pass)) {
     on<PassDetailPassAdded>(_onPassAdded);
   }
 
@@ -31,7 +31,7 @@ class PassDetailBloc extends Bloc<PassDetailEvent, PassDetailState> {
         await _passKit.addPass(event.pass.sourceData!);
         emit(state.copyWith(status: PassDetailStatus.added));
       }
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       addError(error, stackTrace);
       emit(state.copyWith(status: PassDetailStatus.failure));
     }

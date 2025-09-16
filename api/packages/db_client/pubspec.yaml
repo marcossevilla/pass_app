@@ -1,10 +1,10 @@
 name: db_client
 description: A client to interact with the database.
-version: 0.1.0+1
+version: 0.1.0
 publish_to: none
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ^3.9.0
 
 dependencies:
   api_models:
@@ -17,8 +17,8 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.13
+  dart_frog_lint: ^0.1.1
   hive_ce_generator: ^1.7.0
   json_serializable: ^6.8.0
   mocktail: ^1.0.4
   test: ^1.25.7
-  very_good_analysis: ^6.0.0

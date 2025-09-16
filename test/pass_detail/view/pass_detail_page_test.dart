@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'dart:convert';
 
 import 'package:bloc_test/bloc_test.dart';
@@ -108,7 +106,7 @@ class _FakeBarcode extends Fake implements Barcode {
 }
 
 void main() {
-  group('PassDetailPage', () {
+  group(PassDetailPage, () {
     late PkPass pkPass;
 
     setUp(() {
@@ -133,7 +131,7 @@ void main() {
     });
   });
 
-  group('PassDetailView', () {
+  group(PassDetailView, () {
     late PassDetailBloc passDetailBloc;
     late PkPass pkPass;
     late Widget widgetToTest;
@@ -152,7 +150,7 @@ void main() {
       );
     });
 
-    testWidgets('renders PkPassWidget', (tester) async {
+    testWidgets('renders $PkPassWidget', (tester) async {
       await tester.pumpApp(widgetToTest);
       expect(find.byType(PkPassWidget), findsOneWidget);
     });
@@ -165,7 +163,6 @@ void main() {
         tester.l10n.passDetailPageAddToWalletButtonLabel,
       );
 
-      await tester.scrollUntilVisible(finder, 100);
       await tester.tap(finder);
 
       verify(() => passDetailBloc.add(PassDetailPassAdded(pkPass))).called(1);

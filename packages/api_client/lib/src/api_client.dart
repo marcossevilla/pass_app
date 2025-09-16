@@ -120,7 +120,7 @@ class ApiClient {
         },
       );
       return response;
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Error.throwWithStackTrace(
         const ApiError(message: 'Failed to create user'),
         stackTrace,
@@ -136,7 +136,7 @@ class ApiClient {
         modelFromJson: User.fromJson,
       );
       return user;
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Error.throwWithStackTrace(
         const ApiError(message: 'Failed to find user'),
         stackTrace,
@@ -159,7 +159,7 @@ class ApiClient {
         },
       );
       return user;
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Error.throwWithStackTrace(
         const ApiError(message: 'Failed to sign in user'),
         stackTrace,
@@ -181,7 +181,7 @@ class ApiClient {
         queryParameters: {'userId': userId},
       );
       return response;
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       Error.throwWithStackTrace(
         const ApiError(message: 'Failed to create pass'),
         stackTrace,
@@ -198,7 +198,7 @@ class ApiClient {
         modelFromJsonList: passesFromJsonList,
       );
       return response;
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       throw ApiError(
         message: 'Failed to get passes',
         stackTrace: stackTrace,
@@ -214,7 +214,7 @@ class ApiClient {
         modelFromJson: passFromJson,
       );
       return response;
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       throw ApiError(
         message: 'Failed to get pass by ID',
         stackTrace: stackTrace,

@@ -1,10 +1,10 @@
 name: user_repository
 description: A package that manages the user domain.
-version: 0.1.0+1
+version: 0.1.0
 publish_to: none
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ^3.9.0
 
 dependencies:
   api_models:
@@ -15,6 +15,6 @@ dependencies:
   meta: ^1.16.0
 
 dev_dependencies:
+  dart_frog_lint: ^0.1.1
   mocktail: ^1.0.4
   test: ^1.25.7
-  very_good_analysis: ^6.0.0

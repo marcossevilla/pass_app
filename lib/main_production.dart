@@ -4,8 +4,8 @@ import 'package:pass_app/bootstrap.dart';
 import 'package:pass_repository/pass_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
-void main() {
-  bootstrap(() {
+Future<void> main() async {
+  await bootstrap(() {
     final apiClient = ApiClient(host: 'localhost:8080');
     final userRepository = UserRepository(apiClient: apiClient);
     final passRepository = PassRepository(apiClient: apiClient);

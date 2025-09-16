@@ -1,3 +1,4 @@
+// Can cause issues when accessing variables in the test.
 // ignore_for_file: prefer_const_constructors
 
 import 'package:api_models/api_models.dart';
@@ -18,7 +19,7 @@ class _FakeDbEntityRecord extends Fake implements DbEntityRecord {
 }
 
 void main() {
-  group('UserRepository', () {
+  group(UserRepository, () {
     const id =
         'ae5deb822e0d71992900471a7199d0d95b8e7c9d05c40a8245a281fd2c1d6684';
     const password =

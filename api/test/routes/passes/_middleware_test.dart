@@ -36,9 +36,11 @@ void main() {
 
       await handler(context);
 
-      final create = verify(
-        () => context.provide<Future<PassDataSource>>(captureAny()),
-      ).captured.single as Future<PassDataSource> Function();
+      final create =
+          verify(
+                () => context.provide<Future<PassDataSource>>(captureAny()),
+              ).captured.single
+              as Future<PassDataSource> Function();
 
       await expectLater(
         create(),

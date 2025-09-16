@@ -45,13 +45,13 @@ Future<Response> _post(RequestContext context) async {
   final body = await context.request.body();
   final bodyJson = json.decode(body) as Map<String, dynamic>;
 
-  final flutterConfLatamLogo = File(
-    '${Directory.current.path}/public/image.png',
+  final eventLogo = File(
+    '${Directory.current.path}/public/fluttercon_europe_2025.png',
   ).readAsBytesSync();
 
   final unsignedPass = PkPass(
-    logo: PkImage(image1: flutterConfLatamLogo),
-    icon: PkImage(image1: flutterConfLatamLogo),
+    logo: PkImage(image1: eventLogo),
+    icon: PkImage(image1: eventLogo),
     pass: PassData.fromJson(bodyJson),
   );
 

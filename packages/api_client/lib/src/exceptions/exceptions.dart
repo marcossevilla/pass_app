@@ -15,8 +15,7 @@ class ApiError implements Exception {
   final StackTrace stackTrace;
 
   @override
-  // ignore: no_runtimetype_tostring
-  String toString() => '$runtimeType: $message';
+  String toString() => '$message\n$stackTrace';
 }
 
 /// {@template no_data_error}
@@ -25,8 +24,8 @@ class ApiError implements Exception {
 class NoDataError extends ApiError {
   /// {@macro no_data_error}
   NoDataError()
-      : super(
-          message: 'No data returned',
-          stackTrace: StackTrace.current,
-        );
+    : super(
+        message: 'No data returned',
+        stackTrace: StackTrace.current,
+      );
 }

@@ -93,9 +93,9 @@ class SignUpContent extends StatelessWidget {
                 CupertinoTextField(
                   placeholder: l10n.signUpPageUsernameTextFieldPlaceholder,
                   onChanged: (username) {
-                    context
-                        .read<SignUpBloc>()
-                        .add(SignUpUsernameChanged(username));
+                    context.read<SignUpBloc>().add(
+                      SignUpUsernameChanged(username),
+                    );
                   },
                 ),
                 const SizedBox(height: 16),
@@ -103,9 +103,9 @@ class SignUpContent extends StatelessWidget {
                   placeholder: l10n.signUpPagePasswordTextFieldPlaceholder,
                   obscureText: true,
                   onChanged: (password) {
-                    context
-                        .read<SignUpBloc>()
-                        .add(SignUpPasswordChanged(password));
+                    context.read<SignUpBloc>().add(
+                      SignUpPasswordChanged(password),
+                    );
                   },
                 ),
                 const SizedBox(height: 16),

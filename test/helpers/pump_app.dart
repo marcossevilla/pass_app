@@ -8,11 +8,11 @@ import 'package:pass_app/l10n/l10n.dart';
 import 'package:pass_repository/pass_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
-class _MockUserRepository extends Mock implements UserRepository {}
+class MockUserRepository extends Mock implements UserRepository {}
 
-class _MockPassRepository extends Mock implements PassRepository {}
+class MockPassRepository extends Mock implements PassRepository {}
 
-class _MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
+class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
 
 extension PumpApp on WidgetTester {
   Future<void> pumpApp(
@@ -26,14 +26,14 @@ extension PumpApp on WidgetTester {
       MultiRepositoryProvider(
         providers: [
           RepositoryProvider.value(
-            value: userRepository ?? _MockUserRepository(),
+            value: userRepository ?? MockUserRepository(),
           ),
           RepositoryProvider.value(
-            value: passRepository ?? _MockPassRepository(),
+            value: passRepository ?? MockPassRepository(),
           ),
         ],
         child: BlocProvider.value(
-          value: appBloc ?? _MockAppBloc(),
+          value: appBloc ?? MockAppBloc(),
           child: CupertinoApp(
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,

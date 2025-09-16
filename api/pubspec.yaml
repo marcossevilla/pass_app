@@ -4,13 +4,13 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
+  sdk: ^3.9.0
 
 dependencies:
   api_models:
     path: ../packages/api_models
-  dart_frog: ^1.0.0
-  dart_frog_auth: ^1.1.0
+  dart_frog: ^1.2.3
+  dart_frog_auth: ^1.2.1
   db_client:
     path: packages/db_client
   pass_data_source:
@@ -19,7 +19,7 @@ dependencies:
     path: packages/user_repository
 
 dev_dependencies:
+  dart_frog_lint: ^0.1.1
   meta: ^1.16.0
   mocktail: ^1.0.0
   test: ^1.19.2
-  very_good_analysis: ^6.0.0
