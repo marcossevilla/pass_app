@@ -1,3 +1,6 @@
+// dart format off
+// coverage:ignore-file
+
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
@@ -18,8 +21,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signInPageFailureDialogTitle => 'Sign in failure';
 
   @override
-  String get signInPageFailureDialogContent =>
-      'Please make sure your credentials are correct.';
+  String get signInPageFailureDialogContent => 'Please make sure your credentials are correct.';
 
   @override
   String get signInPageFailureDialogActionLabel => 'OK';

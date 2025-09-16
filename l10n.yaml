@@ -2,4 +2,8 @@ arb-dir: lib/l10n/arb
 template-arb-file: app_en.arb
 output-dir: lib/l10n/generated
 output-localization-file: app_localizations.dart
+format: true
 nullable-getter: false
+# Ensures the formatter doesn't run on the generated file and excludes it from coverage.
+# See https://github.com/dart-lang/dart_style/issues/864 for more information.
+header: "// dart format off\n// coverage:ignore-file"
