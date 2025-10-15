@@ -13,7 +13,7 @@ dependencies:
   api_models:
     path: packages/api_models
   apple_passkit: ^1.3.1
-  bloc: ^9.0.1
+  bloc: ^9.1.0
   csslib: ^1.0.2
   cupertino_icons: ^1.0.8
   equatable: ^2.0.7
